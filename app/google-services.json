@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "269463129851",
+    "firebase_url": "https://onlinechat-447b3.firebaseio.com",
+    "project_id": "onlinechat-447b3",
+    "storage_bucket": "onlinechat-447b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269463129851:android:758b495856a1f38e79aa5e",
+        "android_client_info": {
+          "package_name": "com.haohan.onlinechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269463129851-4en3dlemp9l7ne2tm8jp2bhuf67im5pa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtcGjEQU9f-MOXZqZeRKUiLvW08lpmQNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269463129851-4en3dlemp9l7ne2tm8jp2bhuf67im5pa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
