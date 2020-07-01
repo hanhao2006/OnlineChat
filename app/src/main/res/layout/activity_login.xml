@@ -59,7 +59,7 @@
             android:textSize="15sp"/>
 
         <EditText
-            android:id="@+id/register_email"
+            android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -93,10 +93,11 @@
             android:textSize="15sp"/>
 
         <EditText
-            android:id="@+id/register_password"
+            android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:inputType="textPassword"
             android:text=""
             android:ems="10"
             android:textColor="@color/colorPrimary"
@@ -105,11 +106,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/register_signup"
+        android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_desgin"
-        android:text="Sign up"
+        android:text="Login"
         android:textSize="20sp"
         android:textColor="@android:color/white"
         android:layout_gravity="center"

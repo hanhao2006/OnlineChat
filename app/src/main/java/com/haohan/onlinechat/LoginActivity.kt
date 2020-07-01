@@ -3,8 +3,12 @@ package com.haohan.onlinechat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
+import com.haohan.onlinechat.DB.LoginAccess
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
+
+    var login = LoginAccess()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,5 +21,12 @@ class LoginActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
+
+        val context = this.applicationContext
+
+        btn_login.setOnClickListener {
+            login.login(login_email.text.toString(),login_password.text.toString(),context)
+        }
+
     }
 }
