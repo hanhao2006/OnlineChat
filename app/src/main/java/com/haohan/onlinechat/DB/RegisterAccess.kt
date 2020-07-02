@@ -13,6 +13,7 @@ class RegisterAccess{
 
     var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     var refUser: DatabaseReference = FirebaseDatabase.getInstance().reference.child("Users")
+
     private fun checkIsEmpty(email: String, password: String, userName: String): Boolean{
         return when {
             userName == "" -> {

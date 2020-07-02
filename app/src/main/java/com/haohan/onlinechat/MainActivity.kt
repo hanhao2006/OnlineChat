@@ -5,20 +5,25 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseAuth
+import com.haohan.onlinechat.DB.MainAccess
 import com.haohan.onlinechat.Fragments.ChatFragment
 import com.haohan.onlinechat.Fragments.SearchFragment
 import com.haohan.onlinechat.Fragments.SettingFragment
 import com.haohan.onlinechat.Fragments.ViewPagerAdapter
+import com.haohan.onlinechat.modle.Users
 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var mAuth: FirebaseAuth
+
+     private var mainAccess =  MainAccess()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         tablayout.setupWithViewPager(viewPager)
 
         mAuth = FirebaseAuth.getInstance()
+
+        mainAccess.getUserNameAndProfile(user_name,profile_image,R.drawable.ic_profile);
+
 
     }
 
