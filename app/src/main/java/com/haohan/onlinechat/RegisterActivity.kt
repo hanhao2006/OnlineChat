@@ -28,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         register_signup.setOnClickListener {
-            RegisterAccess.regsiter(register_email.text.toString(),register_password.text.toString(),register_name.text.toString(),context)
+            RegisterAccess.regsiter(register_email.text.toString(),register_password.text.toString(),register_name.text.toString(),context = this.applicationContext)
         }
 
     }

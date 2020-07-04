@@ -54,9 +54,8 @@ class RegisterAccess{
         refUser.child(firebaseUserId).setValue(user)
             .addOnCompleteListener { task ->
                 if(task.isSuccessful){
-                    val intent = Intent(context,MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    context.startActivity(intent)
+                    context.startActivity(Intent(context,MainActivity::class.java)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                 }
             }
 

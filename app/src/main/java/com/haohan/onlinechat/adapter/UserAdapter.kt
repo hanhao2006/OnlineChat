@@ -50,5 +50,6 @@ class UserAdapter(
         var offlineSign: CircleImageView = itemView.findViewById(R.id.sign_online)
         var lastSeen: TextView = itemView.findViewById(R.id.message_last)
     }
+
 }
 
