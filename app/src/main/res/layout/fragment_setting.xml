@@ -44,6 +44,13 @@
                android:textSize="30sp"
                android:textColor="@color/colorPrimaryDark"
                android:textStyle="bold"/>'
+
+           <ProgressBar
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/userName_setting"
+               android:visibility="gone"/>
+
        </RelativeLayout>
 
    </androidx.cardview.widget.CardView>

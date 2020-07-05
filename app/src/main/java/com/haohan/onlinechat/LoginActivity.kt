@@ -2,6 +2,7 @@ package com.haohan.onlinechat
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.haohan.onlinechat.DB.LoginAccess
 import kotlinx.android.synthetic.main.activity_login.*
@@ -22,10 +23,11 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-        val context = this.applicationContext
+        val co = this.applicationContext
 
         btn_login.setOnClickListener {
-            login.login(login_email.text.toString(),login_password.text.toString(),context)
+            login.login(login_email.text.toString(),login_password.text.toString(),co)
+            Toast.makeText(this,"login.....",Toast.LENGTH_SHORT).show()
         }
 
     }
