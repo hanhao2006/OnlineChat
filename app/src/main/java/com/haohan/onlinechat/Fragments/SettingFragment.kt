@@ -3,6 +3,7 @@ package com.haohan.onlinechat.Fragments
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -11,6 +12,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EdgeEffect
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.android.gms.tasks.Continuation
@@ -39,6 +42,7 @@ class SettingFragment : Fragment() {
     private var imageUri: Uri? = null
     private var storageReference: StorageReference? = null
     private var coverChecker: String? = null
+    private var socialChecker: String? = null
 
 
     override fun onCreateView(
@@ -79,7 +83,78 @@ class SettingFragment : Fragment() {
             pickImage()
         }
 
+        view.set_facebook.setOnClickListener {
+            socialChecker = "facebook"
+            setSocialLinks()
+        }
+
+        view.set_instargram.setOnClickListener {
+            socialChecker = "instagram"
+            setSocialLinks()
+        }
+
+        view.set_website.setOnClickListener {
+            socialChecker = "website"
+            setSocialLinks()
+        }
+
         return view
+    }
+
+    private fun setSocialLinks() {
+        val builder: AlertDialog.Builder =
+            AlertDialog.Builder(requireContext(),R.style.Theme_AppCompat_DayNight_Dialog_Alert)
+
+        if(socialChecker == "website"){
+            builder.setTitle("Write url: ")
+
+        }else{
+            builder.setTitle("Write user name")
+        }
+
+        val editText = EditText(context)
+        if(socialChecker == "website"){
+            editText.hint= "e.g www.google.com"
+
+        }else{
+            editText.hint = "Hao han"
+        }
+
+        builder.setView(editText)
+        builder.setPositiveButton("Create", DialogInterface.OnClickListener { dialogInterface, i ->
+            val str = editText.text.toString()
+            if(str == ""){
+                Toast.makeText(context,"Please write your website", Toast.LENGTH_SHORT).show()
+            }else{
+                updateSocialLink(str)
+            }
+        })
+       builder.setNegativeButton("Cancel", DialogInterface.OnClickListener { dialogInterface, i ->
+            dialogInterface.cancel()
+       })
+        builder.show()
+    }
+
+    private fun updateSocialLink(str: String) {
+
+        val mapSocial = HashMap<String,Any>()
+
+        when(socialChecker){
+            "facebook" ->{
+                mapSocial["facebook"] = "https://m.facebook.com/$str"
+            }
+            "instagram" ->{
+                mapSocial["instagram"] = "https://m.instargram.com/$str"
+            }
+            "website" ->{
+                mapSocial["website"] = "https://$str"
+            }
+        }
+        databaseRef!!.updateChildren(mapSocial).addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                Toast.makeText(context,"upload your social website was successful...",Toast.LENGTH_SHORT).show()
+
+        } }
     }
 
     private fun pickImage() {
