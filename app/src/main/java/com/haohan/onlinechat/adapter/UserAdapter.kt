@@ -1,12 +1,17 @@
 package com.haohan.onlinechat.adapter
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.haohan.onlinechat.DB.MainAccess
+import com.haohan.onlinechat.MessageChatActivity
 import com.haohan.onlinechat.R
 import com.haohan.onlinechat.modle.Users
 import com.squareup.picasso.Picasso
@@ -38,7 +43,26 @@ class UserAdapter(
       var user: Users = users[position]
         holder.userName.text = user!!.username
         Picasso.get().load(user.profile).placeholder(R.drawable.ic_profile).into(holder.profileImage)
+        holder.itemView.setOnClickListener {
+            val options = arrayOf<CharSequence>(
+                "Send Message",
+                "Visit Profile"
+            )
 
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("What do you want?")
+            builder.setItems(options,DialogInterface.OnClickListener { dialogInterface, i ->
+                if(i  == 0 ){
+                    val intent = Intent(context,MessageChatActivity::class.java)
+                    intent.putExtra("receiverId",user.uid)
+                    context.startActivity(intent)
+                }
+                if(i == 1){
+
+                }
+            })
+            builder.show()
+        }
     }
 
 
